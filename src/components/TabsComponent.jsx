@@ -1,20 +1,18 @@
-import { useState } from 'react';
-// import { Card } from '@/components/ui/card';
+import React from 'react';
 import './TabsComponent.css';
 
-const TabsComponent = () => {
-  const [activeTab, setActiveTab] = useState(0);
-
-  const tabs = ['Bullish', 'Bearish', 'Ranagebound', 'Volatile'];
+const TabsComponent = ({ activeView, setActiveView }) => {
+  // The four views; note that the default (first) is "Bullish"
+  const tabs = ['Bullish', 'Bearish', 'RangeBound', 'Volatile'];
 
   return (
-    <div className='tabs-container'>
-      <div className='tabs'>
+    <div className="tabs-container">
+      <div className="tabs">
         {tabs.map((tab, index) => (
           <button
             key={index}
-            onClick={() => setActiveTab(index)}
-            className={`tab-button ${activeTab === index ? 'active' : ''}`}
+            onClick={() => setActiveView(tab)}
+            className={`tab-button ${activeView === tab ? 'active' : ''}`}
           >
             {tab}
           </button>

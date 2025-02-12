@@ -1,0 +1,28 @@
+.strategy-card {
+    /* margin-top: 10px; */
+    background-color: white;
+    display: flex;
+    width: 762px;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 25px auto; /* Center the container */
+  }
+  .strategy-card h3,p {
+    margin: 0;
+  }
+  p {
+    color: #b0acac;
+  }
+  .bullet {
+    font-size: 1.2em; /* Adjusts the bullet size */
+    margin: 0 0.3rem; /* Adjusts spacing around the bullet */
+    color: #b0acac;      /* Change color if needed */
+  }
+  .empty-state {
+    text-align: center;
+    margin-top: 50px;
+  }
+  

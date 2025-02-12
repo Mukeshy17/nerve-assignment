@@ -44,6 +44,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height to ensure centering */
+  /* height: 100vh; Full viewport height to ensure centering */
 }
 
