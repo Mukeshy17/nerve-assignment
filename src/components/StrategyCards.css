@@ -12,7 +12,8 @@
   }
   @media (max-width: 600px) {
     .strategy-card {
-      width: 222px; /* Adjust width for phones */
+      width: 93%; /* Adjust width for phones */
+      margin-right: 80px;
     }
   }
   .strategy-card h3,p {
