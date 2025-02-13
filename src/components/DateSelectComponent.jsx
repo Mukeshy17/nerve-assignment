@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import './DateSelectComponent.css';
 import StrategyCards from './StrategyCards';
+import upArrow from '../assets/images/up-arrow.svg'
+import downArrow from '../assets/images/down-arrow.svg'
 
 const DateSelectComponent = ({ activeView }) => {
   // Provided dates array (first date is selected by default)
@@ -30,181 +32,15 @@ const DateSelectComponent = ({ activeView }) => {
   };
 
   // Provided strategyArray data with strategies for each view and date
-  const strategyArray = [
-    {
-      View: 'Bullish',
-      Value: {
-        '24-Apr-2024': [
-          'Bull Call Spread',
-          'Bull Put Spread',
-          'Bull Put Spread',
-          'Long Call',
-          'Bull Put Spread',
-          'Bull Call Spread',
-          'Strategy1',
-          'Bull Call Spread',
-          'Strategy1',
-          'Strategy1',
-          'SpreadStrategy',
-          'Bull Call Spread'
-        ],
-        '02-May-2024': [
-          'Bull Call Spread',
-          'Bull Call Spread',
-          'Bull Put Spread',
-          'Long Call',
-          'Long Call',
-          'Long Call',
-          'Bull Put Spread',
-          'Bull Call Spread',
-          'Strategy1',
-          'Bull Call Spread',
-          'Strategy2',
-          'Strategy1',
-          'Strategy2',
-          'Bull Call Spread'
-        ],
-        '09-May-2024': [
-          'Strategy Put',
-          'Strategy Call',
-          'Strategy Call',
-          'Strategy Call',
-          'Strategy Put'
-        ]
-      }
-    },
-    {
-      View: 'Bearish',
-      Value: {
-        '24-Apr-2024': [
-          'Bear Call Spread',
-          'Bear Call Spread',
-          'Bear Call Spread',
-          'Long Put',
-          'Long Put',
-          'Long Put',
-          'Bear Call Spread'
-        ],
-        '31-May-2024': [
-          'Long Put',
-          'Long Put',
-          'Long Put',
-          'Long Put',
-          'Long Put'
-        ],
-        '21-Jun-2024': [
-          'Strategy3',
-          'Strategy3',
-          'Bear Put Spread',
-          'Strategy3',
-          'Long Put',
-          'Long Put'
-        ]
-      }
-    },
-    {
-      View: 'RangeBound',
-      Value: {
-        '24-Apr-2024': [
-          'Short Straddle',
-          'Short Strangle',
-          'Short Strangle',
-          'Iron Butterfly',
-          'Short Strangle',
-          'Short Straddle',
-          'Strategy1',
-          'Short Straddle',
-          'Strategy1',
-          'Strategy1',
-          'SpreadStrategy',
-          'Short Straddle'
-        ],
-        '02-May-2024': [
-          'Short Straddle',
-          'Short Straddle',
-          'Short Strangle',
-          'Iron Butterfly',
-          'Iron Butterfly',
-          'Iron Butterfly',
-          'Short Strangle',
-          'Short Straddle',
-          'Strategy1',
-          'Short Straddle',
-          'Strategy2',
-          'Strategy1',
-          'Strategy2',
-          'Short Straddle'
-        ],
-        '21-Jun-2024': [
-          'Iron Condor',
-          'Iron Butterfly',
-          'Iron Butterfly',
-          'Iron Butterfly',
-          'Iron Condor'
-        ]
-      }
-    },
-    {
-      View: 'Volatile',
-      Value: {
-        '02-May-2024': [
-          'Long Straddle',
-          'Long Strangle',
-          'Long Strangle',
-          'Long Strangle',
-          'Long Straddle',
-          'Strategy1',
-          'Long Straddle',
-          'Strategy1',
-          'Strategy1',
-          'Spread-Strategy',
-          'Long Straddle'
-        ],
-        '09-May-2024': [
-          'Long Straddle',
-          'Long Straddle',
-          'Long Strangle',
-          'Long Strangle',
-          'Long Straddle',
-          'Strategy1',
-          'Long Straddle',
-          'Strategy2',
-          'Strategy1',
-          'Strategy2',
-          'Long Straddle'
-        ],
-        '31-May-2024': [
-          'Long Straddle',
-          'Long Strangle',
-          'Long Strangle',
-          'Long Strangle',
-          'Long Straddle'
-        ]
-      }
-    }
-  ];
+  const strategyArray = require('../config/strategyArray.json');
 
   return (
     <>
-      {/* <div className="date-select-container">
-        <select
-          id="date-select"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-          className="date-select"
-        >
-          {dateArray.map((date, index) => (
-            <option className='card' key={index} value={date}>
-              {date}
-            </option>
-          ))}
-        </select>
-      </div> */}
       <div className="date-select-container" ref={dropdownRef}>
       {/* Display the currently selected date */}
       <div className="custom-select" onClick={() => setIsOpen(!isOpen)}>
         <div className="selected-option">{selectedDate}</div>
-        <div className="arrow">{isOpen ? 'ᐱ ' : 'v'}</div>
+        <div className="arrow">{isOpen ? <img className='arrow-svg' src={upArrow} alt='up arrow'/> : <img src={downArrow} className='arrow-svg' alt='down arrow'/>}</div>
       </div>
       {/* Render the options as cards when open */}
       {isOpen && (
